@@ -33,6 +33,7 @@
             AddButton = new Button();
             SaveButton = new Button();
             pictureBox1 = new PictureBox();
+            BigText = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -83,12 +84,23 @@
             pictureBox1.TabIndex = 5;
             pictureBox1.TabStop = false;
             // 
+            // BigText
+            // 
+            BigText.AutoSize = true;
+            BigText.Font = new Font("Segoe UI", 20F);
+            BigText.Location = new Point(387, 290);
+            BigText.Name = "BigText";
+            BigText.Size = new Size(322, 37);
+            BigText.TabIndex = 16;
+            BigText.Text = "Kategória hozzáadó Form";
+            // 
             // AddCategoryForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.PapayaWhip;
             ClientSize = new Size(800, 450);
+            Controls.Add(BigText);
             Controls.Add(pictureBox1);
             Controls.Add(SaveButton);
             Controls.Add(AddButton);
@@ -108,5 +120,6 @@
         private Button AddButton;
         private Button SaveButton;
         private PictureBox pictureBox1;
+        private Label BigText;
     }
 }
