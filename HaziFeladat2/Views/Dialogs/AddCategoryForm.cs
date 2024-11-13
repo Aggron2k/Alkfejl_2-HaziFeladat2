@@ -19,6 +19,7 @@ namespace HaziFeladat2.Views.Dialogs
         {
             InitializeComponent();
         }
+        }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
