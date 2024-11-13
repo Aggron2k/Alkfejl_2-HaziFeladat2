@@ -19,13 +19,13 @@ namespace HaziFeladat2.Views
     {
         private PetController PetController;
 
-        private List<Pets> CreateDefaultPets()
-        {
-            return new List<Pets>
-                {
-                    new Pets { ID = 1, Name = "Borzsi", Sex = "Male", Age = 2, Weight = 10.0, Category = "Dog" },
-                };
-        }
+        //private List<Pets> CreateDefaultPets()
+        //{
+        //    return new List<Pets>
+        //        {
+        //            new Pets { ID = 1, Name = "Borzsi", Sex = "Male", Age = 2, Weight = 10.0, Category = "Dog" },
+        //        };
+        //}
         public PetMain()
         {
             InitializeComponent();
@@ -58,10 +58,16 @@ namespace HaziFeladat2.Views
 
         private void listToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(PetController)
-            dataGridView1.DataSource = null;
-            dataGridView1.DataSource = PetController.GetPets();
-            dataGridView1.Visible = true;
+            if(PetController.CountPets() <= 0)
+            {
+                MessageBox.Show("Nincs bejegyzett Háziállat!");
+            }
+            else
+            {
+                dataGridView1.DataSource = null;
+                dataGridView1.DataSource = PetController.GetPets();
+            }
+            
         }
 
         private void addToolStripMenuItem_Click(object sender, EventArgs e)

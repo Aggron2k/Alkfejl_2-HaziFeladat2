@@ -43,9 +43,10 @@ namespace HaziFeladat2.Controller
             return dao.GetPets(id);
         }
 
-        //TODO: Delete, Modify 
-
-
+        public int CountPets()
+        {
+            return dao.PetsCount();
+        }
 
 
 
