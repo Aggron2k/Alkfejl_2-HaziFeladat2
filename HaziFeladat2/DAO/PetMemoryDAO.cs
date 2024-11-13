@@ -43,14 +43,22 @@ namespace HaziFeladat2.DAO
 
         public bool UpdatePet(Pets pet)
         {
-            int storedIndex = pets.IndexOf(pets.FirstOrDefault(x => x.ID == pet.ID));
+            var existingPet = pets.FirstOrDefault(x => x.ID == pet.ID);
 
-            if (storedIndex == -1)
+            if (existingPet == null)
             {
+                MessageBox.Show($"Nem lehet módosítani! Nem található ID: {pet.ID}");
                 return false;
             }
 
-            pets[storedIndex] = pet;
+            existingPet.Name = pet.Name;
+            existingPet.Sex = pet.Sex;
+            existingPet.Age = pet.Age;
+            existingPet.Weight = pet.Weight;
+            existingPet.Category = pet.Category;
+
+            MessageBox.Show("Sikeres módosítás!");
+
             return true;
         }
 

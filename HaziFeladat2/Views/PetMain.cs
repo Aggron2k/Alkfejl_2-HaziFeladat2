@@ -83,19 +83,21 @@ namespace HaziFeladat2.Views
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
+            if (!(dataGridView1.CurrentRow?.DataBoundItem is Pets pet))
             {
-                // Hozzáférünk a kijelölt sorhoz, mert a RowIndex érvényes
-                DataGridViewRow selectedRow = dataGridView1.Rows[e.RowIndex];
-
-                // Példa: Olvasunk egy cella értéket
-                var cellValue = selectedRow.Cells[0].Value; // Az első cella értéke
-                //MessageBox.Show("Kijelölt cella értéke: " + cellValue?.ToString());
+                return;
             }
-            else
+
+            AddPetForm form = new AddPetForm(pet);
+
+            var dialogRes = form.ShowDialog();
+
+            if (dialogRes == DialogResult.OK)
             {
-                // Nincs érvényes sor kiválasztva
-                //MessageBox.Show("Nincs kiválasztva sor.");
+                PetController.UpdatePet(form.savePet);
+
+                dataGridView1.DataSource = null;
+                dataGridView1.DataSource = PetController.GetPets();
             }
         }
 

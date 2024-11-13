@@ -18,9 +18,35 @@ namespace HaziFeladat2.Views.Dialogs
     {
 
         public Pets savePet { get; set; }
-        public AddPetForm()
+        public AddPetForm(Pets pet = null)
         {
             InitializeComponent();
+
+            if (pet != null)
+            {
+                IDTextBox.Text = pet.ID.ToString();
+                NameTextBox.Text = pet.Name;
+                if (pet.Sex == "Male")
+                {
+                    male.Checked = true;
+                }
+                else if (pet.Sex == "Female")
+                {
+                    female.Checked = true;
+                }
+                AgeNumericUpDown.Value = pet.Age;
+                WeightNumericUpDown.Value = (decimal)pet.Weight;
+                CategoryComboBox.Text = pet.Category;
+
+                savePet = pet;
+            }
+            else
+            {
+                savePet = new Pets();
+                var generator = new IdGenerator(0);
+                var id = generator.CreateId();
+                IDTextBox.Text = id.ToString();
+            }
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -30,9 +56,7 @@ namespace HaziFeladat2.Views.Dialogs
 
         private void AddPetForm_Load(object sender, EventArgs e)
         {
-            var generator = new IdGenerator(0);
-            var id = generator.CreateId();
-            IDTextBox.Text = Convert.ToString(id);
+            
         }
 
         private void AgeNumericUpDown_ValueChanged(object sender, EventArgs e)
