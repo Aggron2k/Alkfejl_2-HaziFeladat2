@@ -127,5 +127,42 @@ namespace HaziFeladat2.Views
                 MessageBox.Show("Bruh :(");
             }
         }
+
+        private void exportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            {
+                saveFileDialog.Filter = "Text Files (*.txt)|*.txt";
+                saveFileDialog.Title = "Mentés másként";
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        string filePath = saveFileDialog.FileName;
+
+                        var petData = new StringBuilder();
+                        foreach (var pet in PetController.GetPets())
+                        {
+                            petData.AppendLine($"ID: {pet.ID}");
+                            petData.AppendLine($"Name: {pet.Name}");
+                            petData.AppendLine($"Sex: {pet.Sex}");
+                            petData.AppendLine($"Age: {pet.Age}");
+                            petData.AppendLine($"Weight: {pet.Weight}");
+                            petData.AppendLine($"Category: {pet.Category}");
+                            petData.AppendLine();
+                        }
+
+                        System.IO.File.WriteAllText(filePath, petData.ToString());
+
+                        MessageBox.Show("A kisállatok adatai sikeresen exportálva!", "Mentés", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Hiba történt a mentés során: {ex.Message}", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
     }
 }

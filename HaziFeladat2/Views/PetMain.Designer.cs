@@ -32,9 +32,11 @@
             petsToolStripMenuItem = new ToolStripMenuItem();
             listToolStripMenuItem = new ToolStripMenuItem();
             addToolStripMenuItem = new ToolStripMenuItem();
-            dataGridView1 = new DataGridView();
+            exportToolStripMenuItem = new ToolStripMenuItem();
             aboutToolStripMenuItem = new ToolStripMenuItem();
             szeretedToolStripMenuItem = new ToolStripMenuItem();
+            dataGridView1 = new DataGridView();
+            saveFileDialog1 = new SaveFileDialog();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -50,7 +52,7 @@
             // 
             // petsToolStripMenuItem
             // 
-            petsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { listToolStripMenuItem, addToolStripMenuItem });
+            petsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { listToolStripMenuItem, addToolStripMenuItem, exportToolStripMenuItem });
             petsToolStripMenuItem.Name = "petsToolStripMenuItem";
             petsToolStripMenuItem.Size = new Size(41, 20);
             petsToolStripMenuItem.Text = "Pets";
@@ -58,28 +60,23 @@
             // listToolStripMenuItem
             // 
             listToolStripMenuItem.Name = "listToolStripMenuItem";
-            listToolStripMenuItem.Size = new Size(96, 22);
+            listToolStripMenuItem.Size = new Size(108, 22);
             listToolStripMenuItem.Text = "List";
             listToolStripMenuItem.Click += listToolStripMenuItem_Click;
             // 
             // addToolStripMenuItem
             // 
             addToolStripMenuItem.Name = "addToolStripMenuItem";
-            addToolStripMenuItem.Size = new Size(96, 22);
+            addToolStripMenuItem.Size = new Size(108, 22);
             addToolStripMenuItem.Text = "Add";
             addToolStripMenuItem.Click += addToolStripMenuItem_Click;
             // 
-            // dataGridView1
+            // exportToolStripMenuItem
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Dock = DockStyle.Fill;
-            dataGridView1.Location = new Point(0, 24);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(800, 426);
-            dataGridView1.TabIndex = 1;
-            dataGridView1.CellClick += dataGridView1_CellClick;
-            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
-            dataGridView1.SelectionChanged += dataGridView1_SelectionChanged;
+            exportToolStripMenuItem.Name = "exportToolStripMenuItem";
+            exportToolStripMenuItem.Size = new Size(108, 22);
+            exportToolStripMenuItem.Text = "Export";
+            exportToolStripMenuItem.Click += exportToolStripMenuItem_Click;
             // 
             // aboutToolStripMenuItem
             // 
@@ -94,6 +91,20 @@
             szeretedToolStripMenuItem.Size = new Size(185, 22);
             szeretedToolStripMenuItem.Text = "Szereted az állatokat?";
             szeretedToolStripMenuItem.Click += szeretedToolStripMenuItem_Click;
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.BackgroundColor = Color.RosyBrown;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Dock = DockStyle.Fill;
+            dataGridView1.GridColor = Color.Brown;
+            dataGridView1.Location = new Point(0, 24);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(800, 426);
+            dataGridView1.TabIndex = 1;
+            dataGridView1.CellClick += dataGridView1_CellClick;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            dataGridView1.SelectionChanged += dataGridView1_SelectionChanged;
             // 
             // PetMain
             // 
@@ -122,5 +133,7 @@
         private DataGridView dataGridView1;
         private ToolStripMenuItem aboutToolStripMenuItem;
         private ToolStripMenuItem szeretedToolStripMenuItem;
+        private ToolStripMenuItem exportToolStripMenuItem;
+        private SaveFileDialog saveFileDialog1;
     }
 }
