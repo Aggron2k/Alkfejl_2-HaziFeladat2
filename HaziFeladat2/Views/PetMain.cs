@@ -60,7 +60,7 @@ namespace HaziFeladat2.Views
         {
             if(PetController.CountPets() <= 0)
             {
-                MessageBox.Show("Nincs bejegyzett Háziállat!");
+                MessageBox.Show("Nincs bejegyzett Háziállat, hoz létre!");
             }
             else
             {

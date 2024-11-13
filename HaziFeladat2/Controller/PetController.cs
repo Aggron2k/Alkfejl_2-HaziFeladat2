@@ -20,8 +20,10 @@ namespace HaziFeladat2.Controller
 
         public bool AddPet(Pets pet)
         {
-            int id = dao.PetsCount();
-            pet.ID = id;
+            if (pet.ID == 0)
+            {
+                pet.ID = dao.PetsCount() + 1;
+            }
 
             return dao.AddPet(pet);
         }
