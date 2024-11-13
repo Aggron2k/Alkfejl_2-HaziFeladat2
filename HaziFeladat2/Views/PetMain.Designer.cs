@@ -33,13 +33,15 @@
             listToolStripMenuItem = new ToolStripMenuItem();
             addToolStripMenuItem = new ToolStripMenuItem();
             dataGridView1 = new DataGridView();
+            aboutToolStripMenuItem = new ToolStripMenuItem();
+            szeretedToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // menuStrip1
             // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { petsToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { petsToolStripMenuItem, aboutToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(800, 24);
@@ -79,6 +81,20 @@
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             dataGridView1.SelectionChanged += dataGridView1_SelectionChanged;
             // 
+            // aboutToolStripMenuItem
+            // 
+            aboutToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { szeretedToolStripMenuItem });
+            aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            aboutToolStripMenuItem.Size = new Size(52, 20);
+            aboutToolStripMenuItem.Text = "About";
+            // 
+            // szeretedToolStripMenuItem
+            // 
+            szeretedToolStripMenuItem.Name = "szeretedToolStripMenuItem";
+            szeretedToolStripMenuItem.Size = new Size(185, 22);
+            szeretedToolStripMenuItem.Text = "Szereted az állatokat?";
+            szeretedToolStripMenuItem.Click += szeretedToolStripMenuItem_Click;
+            // 
             // PetMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -104,5 +120,7 @@
         private ToolStripMenuItem listToolStripMenuItem;
         private ToolStripMenuItem addToolStripMenuItem;
         private DataGridView dataGridView1;
+        private ToolStripMenuItem aboutToolStripMenuItem;
+        private ToolStripMenuItem szeretedToolStripMenuItem;
     }
 }

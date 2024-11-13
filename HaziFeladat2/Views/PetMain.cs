@@ -58,7 +58,7 @@ namespace HaziFeladat2.Views
 
         private void listToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(PetController.CountPets() <= 0)
+            if (PetController.CountPets() <= 0)
             {
                 MessageBox.Show("Nincs bejegyzett Háziállat, hoz létre!");
             }
@@ -67,7 +67,7 @@ namespace HaziFeladat2.Views
                 dataGridView1.DataSource = null;
                 dataGridView1.DataSource = PetController.GetPets();
             }
-            
+
         }
 
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
@@ -106,6 +106,25 @@ namespace HaziFeladat2.Views
                 var selectedRow = dataGridView1.CurrentRow;
                 var cellValue = selectedRow.Cells[0].Value;
                 //MessageBox.Show("A kijelölt sor első cellájának értéke: " + cellValue?.ToString());
+            }
+        }
+
+        private void szeretedAzÁllatokattToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void szeretedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Szereted az állatokat?", "Fontos Kérdés!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                MessageBox.Show("Szuper vagy :)");
+            }
+            else if (result == DialogResult.No)
+            {
+                MessageBox.Show("Bruh :(");
             }
         }
     }

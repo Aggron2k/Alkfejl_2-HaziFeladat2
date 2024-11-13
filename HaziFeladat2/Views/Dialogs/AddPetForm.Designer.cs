@@ -44,9 +44,12 @@
             AddCategButton = new Button();
             SaveButton = new Button();
             BackButton = new Button();
+            pictureBox1 = new PictureBox();
+            BigText = new Label();
             SexGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)AgeNumericUpDown).BeginInit();
             ((System.ComponentModel.ISupportInitialize)WeightNumericUpDown).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // ID
@@ -198,11 +201,34 @@
             BackButton.UseVisualStyleBackColor = true;
             BackButton.Click += BackButton_Click;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = Properties.Resources.pets;
+            pictureBox1.Location = new Point(509, 12);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(267, 158);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 14;
+            pictureBox1.TabStop = false;
+            // 
+            // BigText
+            // 
+            BigText.AutoSize = true;
+            BigText.Font = new Font("Segoe UI", 20F);
+            BigText.Location = new Point(509, 177);
+            BigText.Name = "BigText";
+            BigText.Size = new Size(261, 37);
+            BigText.TabIndex = 15;
+            BigText.Text = "Állat hozzáadó Form";
+            // 
             // AddPetForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.LightCyan;
             ClientSize = new Size(800, 450);
+            Controls.Add(BigText);
+            Controls.Add(pictureBox1);
             Controls.Add(BackButton);
             Controls.Add(SaveButton);
             Controls.Add(AddCategButton);
@@ -224,6 +250,7 @@
             SexGroup.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)AgeNumericUpDown).EndInit();
             ((System.ComponentModel.ISupportInitialize)WeightNumericUpDown).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -246,5 +273,7 @@
         private Button AddCategButton;
         private Button SaveButton;
         private Button BackButton;
+        private PictureBox pictureBox1;
+        private Label BigText;
     }
 }
