@@ -3,6 +3,7 @@ using HaziFeladat2.DAO;
 using HaziFeladat2.Models;
 using HaziFeladat2.Views;
 using HaziFeladat2.Views.Dialogs;
+using Microsoft.Data.Sqlite;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,12 +13,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Data.Sqlite;
 
 namespace HaziFeladat2.Views
 {
     public partial class PetMain : Form
     {
         private PetController PetController;
+
+        private string connectionString;
 
         //private List<Pets> CreateDefaultPets()
         //{
@@ -29,7 +33,7 @@ namespace HaziFeladat2.Views
         public PetMain()
         {
             InitializeComponent();
-            IPetDAO petDao = new PetMemoryDAO();
+            IPetDAO petDao = new PetDBDAO();
             PetController = new PetController(petDao);
 
             //dataGridView1.DataSource = CreateDefaultPets();
@@ -166,5 +170,60 @@ namespace HaziFeladat2.Views
                 }
             }
         }
+
+        private void selectDatabaseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "SQLite Database (*.db)|*.db";
+                openFileDialog.Title = "Válaszd ki az adatbázis fájlt";
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    // A kiválasztott fájl elérési útvonalának elmentése a connectionString változóba
+                    connectionString = $"Data Source={openFileDialog.FileName}";
+
+                    // Az adatok listázása az adatbázisból
+                    LoadData();
+                }
+            }
+        }
+
+        private void LoadData()
+        {
+            if (string.IsNullOrEmpty(connectionString))
+            {
+                MessageBox.Show("Nincs kiválasztva adatbázisfájl!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            using (var connection = new SqliteConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    using (var command = connection.CreateCommand())
+                    {
+                        command.CommandText = "SELECT * FROM pets"; // Az adatbázis lekérdezése
+
+                        using (var reader = command.ExecuteReader())
+                        {
+                            // DataTable létrehozása és oszlopok beállítása a lekérdezett adatok alapján
+                            DataTable dataTable = new DataTable();
+                            dataTable.Load(reader); // A reader adatainak betöltése a DataTable-be
+
+                            // Adatok megjelenítése a DataGridView-ban
+                            dataGridView1.DataSource = dataTable;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Hiba történt az adatbázishoz való csatlakozáskor: {ex.Message}", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
     }
+
 }

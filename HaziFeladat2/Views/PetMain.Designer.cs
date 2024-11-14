@@ -37,13 +37,15 @@
             szeretedToolStripMenuItem = new ToolStripMenuItem();
             dataGridView1 = new DataGridView();
             saveFileDialog1 = new SaveFileDialog();
+            databaseToolStripMenuItem = new ToolStripMenuItem();
+            selectDatabaseToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // menuStrip1
             // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { petsToolStripMenuItem, aboutToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { petsToolStripMenuItem, aboutToolStripMenuItem, databaseToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(800, 24);
@@ -106,6 +108,20 @@
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             dataGridView1.SelectionChanged += dataGridView1_SelectionChanged;
             // 
+            // databaseToolStripMenuItem
+            // 
+            databaseToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { selectDatabaseToolStripMenuItem });
+            databaseToolStripMenuItem.Name = "databaseToolStripMenuItem";
+            databaseToolStripMenuItem.Size = new Size(67, 20);
+            databaseToolStripMenuItem.Text = "Database";
+            // 
+            // selectDatabaseToolStripMenuItem
+            // 
+            selectDatabaseToolStripMenuItem.Name = "selectDatabaseToolStripMenuItem";
+            selectDatabaseToolStripMenuItem.Size = new Size(180, 22);
+            selectDatabaseToolStripMenuItem.Text = "SelectDatabase";
+            selectDatabaseToolStripMenuItem.Click += selectDatabaseToolStripMenuItem_Click;
+            // 
             // PetMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -135,5 +151,7 @@
         private ToolStripMenuItem szeretedToolStripMenuItem;
         private ToolStripMenuItem exportToolStripMenuItem;
         private SaveFileDialog saveFileDialog1;
+        private ToolStripMenuItem databaseToolStripMenuItem;
+        private ToolStripMenuItem selectDatabaseToolStripMenuItem;
     }
 }
